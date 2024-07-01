@@ -4,12 +4,17 @@ import { getTeamTokenAPI } from '../api/UpdateAPI';
 const team_token = {};
 
 const setTeamToken = async () => {
-  const promiseArr = tokenData.map(async (item) => {
-    const token = await getTeamTokenAPI(item.email, item.password);
-    team_token[item.accountname] = token;
-    return token;
-  });
-  await Promise.all(promiseArr);
+  try {
+
+    const promiseArr = tokenData.map(async (item) => {
+      const token = await getTeamTokenAPI(item.email, item.password);
+      team_token[item.accountname] = token;
+      return token;
+    });
+    await Promise.all(promiseArr);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const getTeamToken = (accountname) => {

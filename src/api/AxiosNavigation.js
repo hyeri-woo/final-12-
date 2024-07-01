@@ -16,9 +16,9 @@ export default function AxiosNavigation() {
             },
           });
         }
-        if (error.response?.status < 200 || error.response?.status > 299) {
-          navigate.current('/error');
-        }
+        // if (error.response?.status < 200 || error.response?.status > 299) {
+        //   navigate.current('/error');
+        // }
         return Promise.reject(error);
       },
     );

@@ -7,7 +7,7 @@ import { LinkWrap } from './Welcome';
 import useAuth from '../hooks/useAuth';
 
 export default function LoginPage() {
-  const URL = `${process.env.API_HOST}/user/login`;
+  const URL = `${process.env.REACT_APP_API_HOST}/user/login`;
   const navigate = useNavigate();
 
   const [isCorrect, setIsCorrect] = useState(true);

@@ -14,7 +14,7 @@ const postGameAPI = async (accountname, content, image = '') => {
       'image': image,
     },
   };
-  const res = await fetch(`${process.env.API_HOST}/post`, {
+  const res = await fetch(`${process.env.REACT_APP_API_HOST}/post`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${token}`,

@@ -11,7 +11,8 @@ import tokenData from '../assets/data/sport_users.json';
 import closeBtn from '../assets/image/icon-x.svg';
 
 export default function Signup() {
-  const URL = process.env.API_HOST;
+  console.log(process.env.REACT_APP_API_HOST);
+  const URL = process.env.REACT_APP_API_HOST;
   const navigate = useNavigate();
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');

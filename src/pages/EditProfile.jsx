@@ -11,7 +11,7 @@ import useModal from '../hooks/useModal';
 import useAuth from '../hooks/useAuth';
 
 export default function EditProfile() {
-  const URL = process.env.API_HOST;
+  const URL = process.env.REACT_APP_API_HOST;
   const navigate = useNavigate();
 
   const [errorMsg, setErrorMsg] = useState('');

@@ -17,11 +17,8 @@ export default function Followers({ id, count }) {
   }, [inView]);
 
   useEffect(() => {
-    setFollowers((prev) => [
-      ...(prev || []),
-      ...FollowList(follower?.pages[page] || []),
-    ]);
-  }, [follower?.pages.length]);
+    setFollowers((prev) => [...(prev || []), ...(follower?.pages[page] || [])]);
+  }, [follower?.pages?.length]);
 
   return (
     <>

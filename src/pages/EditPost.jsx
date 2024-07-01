@@ -110,7 +110,7 @@ export default function EditPost() {
     // 첫 렌더링시 빈 배열[] 예외처리
     if (post.length !== 0) {
       // 불러온 이미지리스트 분리해서 넣어준다
-      if (post.post.image !== []) {
+      if (post.post.image.length > 0) {
         const previurl = post.post.image.split(',');
         if (previurl[0] !== '') {
           setImages(previurl);
@@ -187,20 +187,17 @@ export default function EditPost() {
     console.log(formData);
 
     //요청
-    const res = await fetch(
-      'https://api.mandarin.weniv.co.kr/image/uploadfiles',
-      {
-        method: 'POST',
-        body: formData,
-      },
-    );
+    const res = await fetch(`${process.env.API_HOST}/image/uploadfiles`, {
+      method: 'POST',
+      body: formData,
+    });
 
     // //데이터를 json으로 받아오기
     const json = await res.json();
     console.log(json);
 
     const fileUrl = json.map((img) => {
-      return 'https://api.mandarin.weniv.co.kr/' + img.filename;
+      return `${process.env.API_HOST}/` + img.filename;
     });
 
     setImages([...images, ...fileUrl]);

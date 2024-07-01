@@ -186,18 +186,15 @@ export default function Upload() {
     formData.append('image', resizeFile);
 
     //요청
-    const res = await fetch(
-      'https://api.mandarin.weniv.co.kr/image/uploadfiles',
-      {
-        method: 'POST',
-        body: formData,
-      },
-    );
+    const res = await fetch(`${process.env.API_HOST}/image/uploadfiles`, {
+      method: 'POST',
+      body: formData,
+    });
     // 데이터를 json으로 받아오기
     const json = await res.json();
 
     const fileUrl = json.map((img) => {
-      return 'https://api.mandarin.weniv.co.kr/' + img.filename;
+      return `${process.env.API_HOST}/` + img.filename;
     });
 
     setImages([...images, ...fileUrl]);

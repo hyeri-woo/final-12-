@@ -11,7 +11,7 @@ import useModal from '../hooks/useModal';
 import useAuth from '../hooks/useAuth';
 
 export default function EditProfile() {
-  const URL = 'https://api.mandarin.weniv.co.kr';
+  const URL = process.env.API_HOST;
   const navigate = useNavigate();
 
   const [errorMsg, setErrorMsg] = useState('');

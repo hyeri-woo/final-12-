@@ -11,7 +11,7 @@ import tokenData from '../assets/data/sport_users.json';
 import closeBtn from '../assets/image/icon-x.svg';
 
 export default function Signup() {
-  const URL = 'https://api.mandarin.weniv.co.kr';
+  const URL = process.env.API_HOST;
   const navigate = useNavigate();
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');

@@ -14,7 +14,7 @@ const postGameAPI = async (accountname, content, image = '') => {
       'image': image,
     },
   };
-  const res = await fetch('https://api.mandarin.weniv.co.kr/post', {
+  const res = await fetch(`${process.env.API_HOST}/post`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${token}`,
@@ -40,14 +40,18 @@ const postGameInfo = () => {
 };
 
 const getTeamTokenAPI = async (email, password) => {
-  const userData = {
-    'user': {
-      'email': email,
-      'password': password,
-    },
-  };
-  const data = await POST_API('/user/login', userData);
-  return data?.user.token;
+  try {
+    const userData = {
+      'user': {
+        'email': email,
+        'password': password,
+      },
+    };
+    const data = await POST_API('/user/login', userData);
+    return data?.user.token;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export { postGameInfo, getTeamTokenAPI };

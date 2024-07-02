@@ -5,7 +5,6 @@ const team_token = {};
 
 const setTeamToken = async () => {
   try {
-
     const promiseArr = tokenData.map(async (item) => {
       const token = await getTeamTokenAPI(item.email, item.password);
       team_token[item.accountname] = token;
